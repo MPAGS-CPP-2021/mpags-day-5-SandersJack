@@ -2,6 +2,8 @@
 #define MPAGSCIPHER_VIGENERECIPHER_HPP
 
 #include "VigenereCipher.hpp"
+#include "CipherMode.hpp"
+#include "CaesarCipher.hpp"
 
 #include <map>
 #include <string>
@@ -24,7 +26,7 @@ class VigenereCipher {
     *
     * \param key the key to use in the cipher
     */
-        explicit PlayfairCipher(const std::string& key);
+        explicit VigenereCipher(const std::string& key);
 
     /**
     * \brief Set the key to be used for the encryption/decryption
@@ -46,6 +48,9 @@ class VigenereCipher {
     private:
         /// The cipher key
         std::string key_{""};
+
+        ///Lookup table 
+        std::map<char,CaesarCipher> charLookup_;
 
 };
 
