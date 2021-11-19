@@ -66,8 +66,10 @@ std::string VigenereCipher::applyCipher(const std::string& inputText, const Ciph
             key = newkey[i];
         }
         std::string itext{inputText[i]};
+        // Find the Caesar cipher from the lookup
         auto result = charLookup_.find(key);
         CaesarCipher cipher = result->second;
+        // Run the (de)encryption
         outputtext += cipher.applyCipher(itext, cipherMode);
     }
     return outputtext;
